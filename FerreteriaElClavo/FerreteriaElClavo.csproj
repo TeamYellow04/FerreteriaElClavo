@@ -175,6 +175,7 @@
   <ItemGroup>
     <Compile Include="Data\Database.cs" />
     <Compile Include="Entities\Producto.cs" />
+    <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Forms\Admin.cs">
       <SubType>Form</SubType>
     </Compile>

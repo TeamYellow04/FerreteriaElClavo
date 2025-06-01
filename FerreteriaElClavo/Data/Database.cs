@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace FerreteriaElClavo.Data
@@ -9,5 +10,6 @@ namespace FerreteriaElClavo.Data
         {
             return new SqlConnection(ConfigurationManager.ConnectionStrings["FerreteriaDB"].ConnectionString);
         }
-    }
-}
+
+      
+                }         }

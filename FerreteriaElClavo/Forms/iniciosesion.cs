@@ -1,4 +1,5 @@
-﻿using FerreteriaElClavo.Forms;
+﻿using FerreteriaElClavo.Data;
+using FerreteriaElClavo.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FerreteriaElClavo.Entities;
 
 namespace FerreteriaElClavo
 {
@@ -41,8 +43,54 @@ namespace FerreteriaElClavo
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Admin admin = new Admin();
-            admin.Visible = true;
+            string usuario = textBox1.Text.Trim();
+            string contrasena = textBox2.Text.Trim();
+
+            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(contrasena))
+            {
+                MessageBox.Show("Por favor, ingrese usuario y contraseña.");
+                return;
+            }
+
+            try
+            {
+                int rol;
+                if (Usuario.Autenticar(usuario, contrasena, out rol))
+                {
+                  
+                    if (rol == 1)
+                    {
+                        Admin admin = new Admin();
+                        admin.Show();
+                    }
+                    else if (rol == 2)
+                    {
+                        
+                        Vendedor Vendedor = new Vendedor(); 
+                        Vendedor.Show();
+                    }
+
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña incorrectos, o rol no autorizado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al validar el usuario: " + ex.Message);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
