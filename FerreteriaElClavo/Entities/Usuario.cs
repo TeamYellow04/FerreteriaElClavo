@@ -17,11 +17,11 @@ namespace FerreteriaElClavo.Entities
             using (SqlConnection conn = Database.GetConnection())
             {
                 conn.Open();
-                string query = "SELECT Rol FROM Usuarios WHERE Usuario = @Usuario AND Contrasena = @Contrasena";
+                string query = "SELECT Rol FROM Usuario WHERE nombre = @nombre AND Contrasena = @Contrasena";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@Usuario", nombreUsuario);
+                    cmd.Parameters.AddWithValue("@nombre", nombreUsuario);
                     cmd.Parameters.AddWithValue("@Contrasena", contrasena);
 
                     object result = cmd.ExecuteScalar();

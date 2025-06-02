@@ -61,12 +61,14 @@ namespace FerreteriaElClavo
                     if (rol == 1)
                     {
                         Admin admin = new Admin();
+                        admin.StartPosition = FormStartPosition.CenterScreen;
                         admin.Show();
                     }
                     else if (rol == 2)
                     {
                         
-                        Vendedor Vendedor = new Vendedor(); 
+                        Vendedor Vendedor = new Vendedor();
+                        Vendedor.StartPosition = FormStartPosition.CenterScreen;
                         Vendedor.Show();
                     }
 
